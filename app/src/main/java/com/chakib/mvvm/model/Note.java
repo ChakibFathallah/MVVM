@@ -1,5 +1,6 @@
 package com.chakib.mvvm.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -11,11 +12,12 @@ public class Note {
 
     private String title;
 
-    private String priority;
+    //@ColumnInfo(name = "priority_column")
+    private int priority;
 
-    private int description;
+    private String description;
 
-    public Note(String title, String priority, int description) {
+    public Note(String title,  String description, int priority) {
         this.title = title;
         this.priority = priority;
         this.description = description;
@@ -33,11 +35,11 @@ public class Note {
         return title;
     }
 
-    public String getPriority() {
+    public int getPriority() {
         return priority;
     }
 
-    public int getDescription() {
+    public String getDescription() {
         return description;
     }
 }

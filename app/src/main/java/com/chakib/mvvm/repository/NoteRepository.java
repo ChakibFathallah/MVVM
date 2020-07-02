@@ -48,6 +48,13 @@ public class NoteRepository {
         return allNotes;
     }
 
+
+
+
+
+
+
+
     private static class InsertAsyncTask extends android.os.AsyncTask<Note, Void, Void>
     {
         private NoteDao noteDao;

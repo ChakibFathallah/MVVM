@@ -17,11 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
-    def lifecycle_version = "2.1.0"
-    def room_version = "2.2.2"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -32,11 +36,26 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    //ButterKnife
+    def ButterKnifeVersion = "10.2.1"
+    implementation "com.jakewharton:butterknife:$ButterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$ButterKnifeVersion"
+
+    //Material design
+    def materialDesignVersion = "1.0.0"
+    implementation "com.google.android.material:material:$materialDesignVersion"
+
     // ViewModel and LiveData (life cycle components)
+    def lifecycle_version = "2.1.0"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
 
     // Room Components
+    def room_version = "2.2.2"
     implementation "android.arch.persistence.room:runtime:$room_version"
     annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+
+
+
+
 }

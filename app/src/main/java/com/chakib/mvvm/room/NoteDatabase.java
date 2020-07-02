@@ -13,7 +13,7 @@ import com.chakib.mvvm.dao.NoteDao;
 import com.chakib.mvvm.model.Note;
 
 @Database(entities = {Note.class}, version = 1)
-public abstract class NoteDatabase extends RoomDatabase {
+public abstract class  NoteDatabase extends RoomDatabase {
 
     //turn this class into siglethon (we can't create multiple instance of this DB => we use the same instance anywhere in our app
     private static NoteDatabase instance;
@@ -29,7 +29,7 @@ public abstract class NoteDatabase extends RoomDatabase {
         {
             // return an instance of the DB
             instance = Room.databaseBuilder(context.getApplicationContext(),
-                    NoteDatabase.class,"note_database")
+                     NoteDatabase.class,"note_database")
                     .fallbackToDestructiveMigration()
                     .addCallback(roomCallback)
                     .build();
@@ -37,6 +37,9 @@ public abstract class NoteDatabase extends RoomDatabase {
 
         return instance;
     }
+
+
+
 
     private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback()
     {
@@ -47,6 +50,9 @@ public abstract class NoteDatabase extends RoomDatabase {
             new PopulateDbAsyncTask(instance).execute();
         }
     };
+
+
+
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void>
     {
